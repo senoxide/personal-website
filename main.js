@@ -1,314 +1,225 @@
+/* ===========================================================
+   16june.me — typing effect + bottom nav scroll-spy
+   =========================================================== */
+
+// ---------- typing effect ----------
+
 const phrases = [
 	"manages ai agents",
 	"runs web servers",
 	"ships clean pipelines",
 	"builds linux tooling",
-	"tunes local llms",
+	"trains pytorch models",
 ];
 
 const typingText = document.getElementById("typing-text");
-let phraseIndex = 0;
-let charIndex = 0;
-let deleting = false;
 
-const typeSpeed = 70;
-const deleteSpeed = 40;
-const pauseTime = 1400;
+if (typingText) {
+	let phraseIndex = 0;
+	let charIndex = 0;
+	let deleting = false;
 
-const tick = () => {
-	const current = phrases[phraseIndex];
+	const typeSpeed = 70;
+	const deleteSpeed = 40;
+	const pauseTime = 1400;
 
-	if (!deleting) {
-		charIndex += 1;
-		typingText.textContent = `[${current.slice(0, charIndex)}]`;
-		if (charIndex === current.length) {
-			deleting = true;
-			setTimeout(tick, pauseTime);
-			return;
-		}
-	} else {
-		charIndex -= 1;
-		typingText.textContent = `[${current.slice(0, charIndex)}]`;
-		if (charIndex === 0) {
-			deleting = false;
-			phraseIndex = (phraseIndex + 1) % phrases.length;
-		}
-	}
+	const tick = () => {
+		const current = phrases[phraseIndex];
 
-	setTimeout(tick, deleting ? deleteSpeed : typeSpeed);
-};
-
-tick();
-
-window.addEventListener("load", () => {
-	const accent = "color:#4cc9ff;font-weight:600";
-	const dim = "color:#7a91b8";
-	const warn = "color:#f6c177";
-	const mono = "font-family:monospace";
-
-	console.log("%ci'm an angry milk", `${accent};${mono}`);
-	console.log("%c$ rm -rf /happymilk", `${warn};${mono}`);
-	console.log("%cremoving %c'/happymilk'", `${dim};${mono}`, `${accent};${mono}`);
-	console.log("%cremoving %c'/happymilk/.git'", `${dim};${mono}`, `${accent};${mono}`);
-	console.log("%cremoving %c'/happymilk/maimai'", `${dim};${mono}`, `${accent};${mono}`);
-	console.log("%cremoving %c'/happymilk/happiness'", `${dim};${mono}`, `${accent};${mono}`);
-	console.log("%cremoving %c'/happymilk/snacks'", `${dim};${mono}`, `${accent};${mono}`);
-	console.log("%cremoving %c'/happymilk/notes/todo.md'", `${dim};${mono}`, `${accent};${mono}`);
-});
-
-const terminalInput = document.getElementById("terminal-input");
-const terminalOutput = document.getElementById("terminal-output");
-const terminalBar = document.querySelector(".terminal-bar");
-const keyPattern = /^[a-z0-9]$/i;
-
-let idleTimerId;
-const idleDelayMs = 1670;
-let scrollPending = false;
-
-const openOutput = () => {
-	terminalOutput.classList.add("is-open");
-};
-
-const closeOutput = () => {
-	terminalOutput.classList.remove("is-open");
-};
-
-const scrollOutput = () => {
-	if (scrollPending) {
-		return;
-	}
-	scrollPending = true;
-	requestAnimationFrame(() => {
-		scrollPending = false;
-		terminalOutput.scrollTop = terminalOutput.scrollHeight;
-	});
-};
-
-const appendLineText = (text) => {
-	const line = document.createElement("div");
-	line.className = "terminal-line";
-	line.textContent = text;
-	terminalOutput.appendChild(line);
-};
-
-const appendPromptLine = (text) => {
-	const line = document.createElement("div");
-	line.className = "terminal-line";
-
-	const prompt = document.createElement("span");
-	prompt.className = "terminal-prompt";
-	prompt.textContent = "june@16june:~#";
-
-	const command = document.createElement("span");
-	command.textContent = ` ${text}`;
-
-	line.appendChild(prompt);
-	line.appendChild(command);
-	terminalOutput.appendChild(line);
-};
-
-const finalizeOutput = () => {
-	openOutput();
-	scrollOutput();
-};
-
-const appendBlock = (node) => {
-	terminalOutput.appendChild(node);
-	finalizeOutput();
-};
-
-const appendLines = (lines) => {
-	const fragment = document.createDocumentFragment();
-	lines.forEach((lineText) => {
-		const line = document.createElement("div");
-		line.className = "terminal-line";
-		line.textContent = lineText;
-		fragment.appendChild(line);
-	});
-	terminalOutput.appendChild(fragment);
-	finalizeOutput();
-};
-
-const setIdleState = (isIdle) => {
-	terminalOutput.classList.toggle("is-idle", isIdle);
-	if (terminalBar) {
-		terminalBar.classList.toggle("is-idle", isIdle);
-	}
-};
-
-const stopIdleTimer = () => {
-	setIdleState(false);
-	window.clearTimeout(idleTimerId);
-};
-
-const startIdleTimer = () => {
-	window.clearTimeout(idleTimerId);
-	idleTimerId = window.setTimeout(() => {
-		setIdleState(true);
-	}, idleDelayMs);
-};
-
-const formatUptime = () => {
-	const start = new Date("2010-06-16T00:00:00Z");
-	const now = new Date();
-	const diffMs = Math.max(0, now - start);
-	const totalMinutes = Math.floor(diffMs / 60000);
-	const days = Math.floor(totalMinutes / 1440);
-	const hours = Math.floor((totalMinutes % 1440) / 60);
-	const minutes = totalMinutes % 60;
-	return `${days}d ${hours}h ${minutes}m`;
-};
-
-const renderJunefetch = () => {
-	const block = document.createElement("div");
-	block.className = "terminal-block";
-
-	const art = document.createElement("pre");
-	art.textContent = [
-		"   _                  ",
-		"  (_)                 ",
-		"   _ _   _ _ __   ___ ",
-		"  | | | | | '_ \\ / _ \\",
-		"  | | |_| | | | |  __/",
-		"  | |\\__,_|_| |_|\\___|",
-		" _/ |                 ",
-		"|__/                  ",
-	].join("\n");
-
-	const stats = document.createElement("div");
-	stats.className = "terminal-stats";
-	stats.innerHTML = [
-		"<br />",
-		"<br />",
-		`<div><span class="terminal-prompt">OS</span>: Gentoo Linux x86_64</div>`,
-		`<div><span class="terminal-prompt">Shell</span>: bash 5.2</div>`,
-		`<div><span class="terminal-prompt">Editor</span>: Neovim</div>`,
-		`<div><span class="terminal-prompt">Window Manager</span>: Hyprland 0.54.3 (Wayland)</div>`,
-		`<div><span class="terminal-prompt">Uptime</span>: ${formatUptime()}</div>`,
-		"<br />",
-	].join("");
-
-	block.appendChild(art);
-	block.appendChild(stats);
-	appendBlock(block);
-};
-
-const renderGit = () => {
-	const lines = [
-		"f3a2c1d - chore: deployed grafana agent for monitoring container metrics (docker)",
-		"8b91e0a - feat: deployed ai-assisted personal assistant to communicate to wayland desktops via mako (python)",
-		"6ce4d33 - feat: experimented with linear algebra and matrix libraries in rust (rust)",
-		"2a8bd0f - fix: updated server kernels to protect against latest copy-fail vulnerabilities (linux)",
-	];
-	appendLines(lines);
-};
-
-const renderPing = () => {
-	const start = performance.now();
-	const jitter = 8 + Math.random() * 24;
-	window.setTimeout(() => {
-		const latency = Math.round(performance.now() - start);
-		appendLineText(`pong ${latency}ms`);
-		finalizeOutput();
-	}, jitter);
-};
-
-const renderHelp = () => {
-	appendLineText("available: junefetch, git, ping, clear, help");
-	finalizeOutput();
-};
-
-const handleCommand = (raw) => {
-	const input = raw.trim();
-	if (!input) {
-		return;
-	}
-
-	appendPromptLine(input);
-	finalizeOutput();
-
-	switch (input) {
-		case "junefetch":
-			renderJunefetch();
-			break;
-		case "git":
-			renderGit();
-			break;
-		case "ping":
-			renderPing();
-			break;
-		case "clear":
-			terminalOutput.innerHTML = "";
-			closeOutput();
-			break;
-		case "help":
-			renderHelp();
-			break;
-		default:
-			appendLineText(`bash: command not found: ${input}`);
-			finalizeOutput();
-	}
-};
-
-if (terminalInput) {
-	window.addEventListener("load", () => {
-		terminalInput.focus();
-		stopIdleTimer();
-		startIdleTimer();
-	});
-
-	window.addEventListener("keydown", (event) => {
-		if (event.metaKey || event.ctrlKey || event.altKey) {
-			return;
+		if (!deleting) {
+			charIndex += 1;
+			typingText.textContent = current.slice(0, charIndex);
+			if (charIndex === current.length) {
+				deleting = true;
+				setTimeout(tick, pauseTime);
+				return;
+			}
+		} else {
+			charIndex -= 1;
+			typingText.textContent = current.slice(0, charIndex);
+			if (charIndex === 0) {
+				deleting = false;
+				phraseIndex = (phraseIndex + 1) % phrases.length;
+			}
 		}
 
-		if (document.activeElement === terminalInput) {
-			return;
-		}
+		setTimeout(tick, deleting ? deleteSpeed : typeSpeed);
+	};
 
-		if (keyPattern.test(event.key)) {
-			terminalInput.focus();
-			stopIdleTimer();
-		}
-	});
+	tick();
+}
 
-	terminalInput.addEventListener("focus", () => {
-		stopIdleTimer();
-	});
+// ---------- ripple effect (buttons + more-on-github card) ----------
 
-	terminalInput.addEventListener("input", () => {
-		stopIdleTimer();
-	});
-
-	terminalInput.addEventListener("blur", () => {
-		startIdleTimer();
-	});
-
-	terminalInput.addEventListener("keydown", (event) => {
-		if (event.key === "Enter") {
-			const value = terminalInput.value;
-			terminalInput.value = "";
-			handleCommand(value);
-		}
+function attachRipple(el) {
+	el.addEventListener("pointerdown", (event) => {
+		const rect = el.getBoundingClientRect();
+		const size = Math.max(rect.width, rect.height) * 1.4;
+		const ripple = document.createElement("span");
+		ripple.className = "ripple";
+		ripple.style.width = `${size}px`;
+		ripple.style.height = `${size}px`;
+		ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+		ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+		el.appendChild(ripple);
+		ripple.addEventListener("animationend", () => ripple.remove());
 	});
 }
 
-if (terminalBar) {
-	terminalBar.addEventListener("mouseenter", () => {
-		stopIdleTimer();
-	});
+document.querySelectorAll(".btn, .project-card--more").forEach(attachRipple);
 
-	terminalBar.addEventListener("mouseleave", () => {
-		startIdleTimer();
-	});
+// ---------- github stats (cached, fails silently to last-known-good) ----------
+
+const GH_USERNAME = "sixteenjune";
+const GH_CACHE_KEY = "gh-stats-cache-v1";
+const GH_CACHE_TTL = 1000 * 60 * 60 * 6; // 6 hours
+
+const statEls = {
+	repos: document.querySelector('[data-stat="repos"]'),
+	stars: document.querySelector('[data-stat="stars"]'),
+	followers: document.querySelector('[data-stat="followers"]'),
+	updated: document.querySelector('[data-stat="updated"]'),
+};
+
+function readGhCache() {
+	try {
+		const raw = localStorage.getItem(GH_CACHE_KEY);
+		if (!raw) return null;
+		const parsed = JSON.parse(raw);
+		if (!parsed || !parsed.data || !parsed.timestamp) return null;
+		return parsed;
+	} catch {
+		return null;
+	}
 }
 
-if (terminalOutput) {
-	terminalOutput.addEventListener("mouseenter", () => {
-		stopIdleTimer();
+function writeGhCache(data) {
+	try {
+		localStorage.setItem(GH_CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+	} catch {
+		// storage unavailable (private browsing etc) — safe to ignore
+	}
+}
+
+function timeAgo(dateStr) {
+	const diffMs = Date.now() - new Date(dateStr).getTime();
+	const mins = Math.floor(diffMs / 60000);
+	if (mins < 60) return `${Math.max(mins, 1)}m ago`;
+	const hours = Math.floor(mins / 60);
+	if (hours < 24) return `${hours}h ago`;
+	const days = Math.floor(hours / 24);
+	if (days < 30) return `${days}d ago`;
+	return `${Math.floor(days / 30)}mo ago`;
+}
+
+function renderGhStats(data) {
+	if (statEls.repos) statEls.repos.textContent = data.repos;
+	if (statEls.stars) statEls.stars.textContent = data.stars;
+	if (statEls.followers) statEls.followers.textContent = data.followers;
+	if (statEls.updated) {
+		statEls.updated.textContent = data.lastPush ? `updated ${timeAgo(data.lastPush)}` : "synced";
+	}
+}
+
+async function loadGithubStats() {
+	if (!statEls.repos) return;
+
+	const cached = readGhCache();
+	if (cached) {
+		renderGhStats(cached.data);
+		if (Date.now() - cached.timestamp < GH_CACHE_TTL) {
+			return; // cache is fresh enough, skip the network call entirely
+		}
+	}
+
+	try {
+		const [userRes, reposRes] = await Promise.all([
+			fetch(`https://api.github.com/users/${GH_USERNAME}`),
+			fetch(`https://api.github.com/users/${GH_USERNAME}/repos?per_page=100`),
+		]);
+		if (!userRes.ok || !reposRes.ok) throw new Error("github api error");
+
+		const user = await userRes.json();
+		const repos = await reposRes.json();
+		const repoList = Array.isArray(repos) ? repos : [];
+
+		const stars = repoList.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+		const lastPush = repoList.length
+			? repoList.reduce((latest, r) => (new Date(r.pushed_at) > new Date(latest) ? r.pushed_at : latest), repoList[0].pushed_at)
+			: null;
+
+		const data = {
+			repos: user.public_repos ?? "–",
+			stars,
+			followers: user.followers ?? "–",
+			lastPush,
+		};
+
+		writeGhCache(data);
+		renderGhStats(data);
+	} catch {
+		// network/rate-limit failure: keep showing cached data if we had it,
+		// otherwise fail quietly rather than showing a broken widget
+		if (!cached && statEls.updated) {
+			statEls.updated.textContent = "stats unavailable";
+		}
+	}
+}
+
+loadGithubStats();
+
+// ---------- bottom nav: scroll-spy + sliding indicator ----------
+
+const nav = document.querySelector(".bottom-nav");
+const indicator = document.querySelector(".bottom-nav__indicator");
+const navItems = Array.from(document.querySelectorAll(".bottom-nav__item"));
+
+if (nav && indicator && navItems.length) {
+	const sections = navItems
+		.map((item) => document.querySelector(item.getAttribute("href")))
+		.filter(Boolean);
+
+	const setActive = (item) => {
+		navItems.forEach((i) => i.classList.remove("is-active"));
+		item.classList.add("is-active");
+		moveIndicator(item);
+	};
+
+	function moveIndicator(item) {
+		const navRect = nav.getBoundingClientRect();
+		const itemRect = item.getBoundingClientRect();
+		indicator.style.width = `${itemRect.width}px`;
+		indicator.style.transform = `translateX(${itemRect.left - navRect.left}px)`;
+	}
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const match = navItems.find((i) => i.getAttribute("href") === `#${entry.target.id}`);
+					if (match) {
+						setActive(match);
+					}
+				}
+			});
+		},
+		{ rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+	);
+
+	sections.forEach((section) => observer.observe(section));
+
+	navItems.forEach((item) => {
+		item.addEventListener("click", () => setActive(item));
 	});
 
-	terminalOutput.addEventListener("mouseleave", () => {
-		startIdleTimer();
+	window.addEventListener("load", () => moveIndicator(navItems[0]));
+
+	let resizeTimer;
+	window.addEventListener("resize", () => {
+		window.clearTimeout(resizeTimer);
+		resizeTimer = window.setTimeout(() => {
+			const active = navItems.find((i) => i.classList.contains("is-active")) || navItems[0];
+			moveIndicator(active);
+		}, 120);
 	});
 }

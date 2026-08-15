@@ -4,215 +4,263 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>16june.me | june</title>
+		<meta name="description" content="june — linux, systems and machine learning projects." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://cdn.jsdelivr.net" />
-		<link rel="preconnect" href="https://media.discordapp.net" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;600&family=Google+Sans+Flex:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<div class="bg-grid" aria-hidden="true"></div>
-		<div class="ambient-orb ambient-orb--one" aria-hidden="true"></div>
-		<div class="ambient-orb ambient-orb--two" aria-hidden="true"></div>
-		<section class="intro-section snap-section">
-			<header class="hero">
-				<div class="hero__inner">
+		<div class="bg-blob bg-blob--blue" aria-hidden="true"></div>
+		<div class="bg-blob bg-blob--sapphire" aria-hidden="true"></div>
+		<div class="bg-blob bg-blob--lavender" aria-hidden="true"></div>
+
+		<!-- ============ HERO ============ -->
+		<section class="hero" id="home">
+			<div class="hero-bento">
+				<div class="bento-tile bento-tile--main">
 					<p class="eyebrow">16june.me</p>
 					<h1 class="title">hi, i'm <span class="accent">june</span></h1>
-					<div class="typing" aria-live="polite">
-						<span class="typing__label">june</span>
-						<span class="typing__cursor">:</span>
-						<span id="typing-text" class="typing__text"></span>
+
+					<div class="status-chip" aria-live="polite">
+						<span class="status-chip__dot" aria-hidden="true"></span>
+						<span class="status-chip__text">[<span id="typing-text"></span><span class="status-chip__cursor">_</span>]</span>
 					</div>
-					<p class="subtitle">
-						building random stuff i like.
-					</p>
+
+					<p class="subtitle">building random stuff i like.</p>
+
 					<div class="links">
 						<a class="btn" href="https://github.com/sixteenjune" target="_blank" rel="noreferrer">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg" class="btn__icon" alt="github tag" />
+							<img
+								src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg"
+								class="btn__icon"
+								alt=""
+								aria-hidden="true"
+							/>
 							github
 						</a>
-						<a class="btn btn--ghost" href="https://discord.com/users/1473587210203959390" target="_blank" rel="noreferrer">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg" class="btn__icon" alt="discord tag" />
+						<a class="btn btn--tonal" href="https://discord.com/users/1473587210203959390" target="_blank" rel="noreferrer">
+							<img
+								src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg"
+								class="btn__icon"
+								alt=""
+								aria-hidden="true"
+							/>
 							discord
 						</a>
 					</div>
-					<a class="scroll-arrow" href="#hobbies" aria-label="Scroll to hobbies">
-						scroll
-						<span aria-hidden="true">↓</span>
+
+					<a class="scroll-hint" href="#skills">
+						scroll <span aria-hidden="true">↓</span>
 					</a>
 				</div>
-			</header>
 
-			<main class="content">
-				<section class="section">
-					<h2 class="section__title">skills</h2>
-					<div class="skills">
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linux.svg" alt="linux icon" />
-						</div>
-						<div>
-							<h3>linux</h3>
-							<p>daily driver os</p>
-						</div>
-					</article>
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/shell-light.svg" alt="bash icon" />
-						</div>
-						<div>
-							<h3>bash</h3>
-							<p>scripts to automate & save time</p>
-						</div>
-					</article>
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/python.svg" alt="python icon" />
-						</div>
-						<div>
-							<h3>python</h3>
-							<p>bots, tools & mathematics</p>
-						</div>
-					</article>
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rust-dark.svg" alt="rust icon" />
-						</div>
-						<div>
-							<h3>rust</h3>
-							<p>low-level systems code</p>
-						</div>
-					</article>
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg" alt="docker icon" />
-						</div>
-						<div>
-							<h3>docker</h3>
-							<p>containers for security and reproducibility</p>
-						</div>
-					</article>
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/javascript.svg" alt="javascript icon" />
-						</div>
-						<div>
-							<h3>javascript</h3>
-							<p>for web development</p>
-						</div>
-					</article>
-					<article class="skill">
-						<div class="skill__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ollama-dark.svg" alt="ollama icon" />
-						</div>
-						<div>
-							<h3>ollama</h3>
-							<p>ai on my own device</p>
-						</div>
-					</article>
+				<div class="bento-tile bento-tile--mark" aria-hidden="true">
+					<div class="blob-mark">
+						<span class="blob-mark__letter">j</span>
 					</div>
-				</section>
-			</main>
+				</div>
+
+				<div class="bento-tile bento-tile--stats">
+					<p class="bento-tile__label">github</p>
+					<div class="stat-row">
+						<div class="stat">
+							<span class="stat__value" data-stat="repos">–</span>
+							<span class="stat__label">repos</span>
+						</div>
+						<div class="stat">
+							<span class="stat__value" data-stat="stars">–</span>
+							<span class="stat__label">stars</span>
+						</div>
+						<div class="stat">
+							<span class="stat__value" data-stat="followers">–</span>
+							<span class="stat__label">followers</span>
+						</div>
+					</div>
+					<p class="bento-tile__meta" data-stat="updated">syncing…</p>
+				</div>
+			</div>
 		</section>
 
-		<section class="projects-section snap-section" id="projects">
+		<!-- ============ SKILLS ============ -->
+		<section class="skills-section" id="skills">
 			<div class="section">
-				<h2 class="section__title">projects</h2>
-				<div class="project-grid">
-					<article class="project-card">
-						<div class="project-body">
-							<h3>ollama-discord</h3>
-							<p>locally-hosted discord bot to connect to ollama. features persistent memory, contextual history, and rate limiting.</p>
-						</div>
-						<div class="project-footer">
-							<a class="btn btn--ghost btn--small" href="https://github.com/sixteenjune/ollama-discord" target="_blank" rel="noreferrer">
-								<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg" class="btn__icon" alt="github" />
-								github
-							</a>
-							<div class="project-tech" aria-label="Technologies used">
-								<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/python.svg" alt="python icon" title="Python" />
-								<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg" alt="docker icon" title="Docker" />
-								<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ollama-dark.svg" alt="ollama icon" title="Ollama" />
-							</div>
-						</div>
-					</article>
+				<div class="section-header">
+					<p class="section-eyebrow">stack</p>
+					<h2 class="section-title">skills</h2>
+				</div>
 
-					<!-- Project Template -->
-					<article class="project-card">
-						<div class="project-body">
-							<h3>coming soon...</h3>
-							<p>it's blank right now.</p>
+				<div class="skills-grid">
+					<article class="skill-tile" style="--tint: rgba(137,180,250,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linux.svg" alt="" />
 						</div>
-						<div class="project-footer">
-							<a class="btn btn--ghost btn--small" href="#" target="_blank" rel="noreferrer">
-								<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg" class="btn__icon" alt="github" />
-								github
-							</a>
-							<div class="project-tech" aria-label="Technologies used">
-								<!-- <img src="icon-url.svg" alt="tech icon" /> -->
-							</div>
-						</div>
+						<p class="skill-tile__label">linux</p>
 					</article>
-
-					<!-- Project Template -->
-					<article class="project-card">
-						<div class="project-body">
-							<h3>coming soon...</h3>
-							<p>it's blank right now.</p>
+					<article class="skill-tile" style="--tint: rgba(116,199,236,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/shell-light.svg" alt="" />
 						</div>
-						<div class="project-footer">
-							<a class="btn btn--ghost btn--small" href="#" target="_blank" rel="noreferrer">
-								<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg" class="btn__icon" alt="github" />
-								github
-							</a>
-							<div class="project-tech" aria-label="Technologies used">
-								<!-- <img src="icon-url.svg" alt="tech icon" /> -->
-							</div>
+						<p class="skill-tile__label">bash</p>
+					</article>
+					<article class="skill-tile" style="--tint: rgba(137,222,235,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/python.svg" alt="" />
 						</div>
+						<p class="skill-tile__label">python</p>
+					</article>
+					<article class="skill-tile" style="--tint: rgba(180,190,254,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cpp.svg" alt="" />
+						</div>
+						<p class="skill-tile__label">c++</p>
+					</article>
+					<article class="skill-tile" style="--tint: rgba(137,180,250,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rust-dark.svg" alt="" />
+						</div>
+						<p class="skill-tile__label">rust</p>
+					</article>
+					<article class="skill-tile" style="--tint: rgba(116,199,236,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pytorch.svg" alt="" />
+						</div>
+						<p class="skill-tile__label">pytorch</p>
+					</article>
+					<article class="skill-tile" style="--tint: rgba(137,222,235,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg" alt="" />
+						</div>
+						<p class="skill-tile__label">docker</p>
+					</article>
+					<article class="skill-tile" style="--tint: rgba(180,190,254,.16)">
+						<div class="skill-tile__icon">
+							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/javascript.svg" alt="" />
+						</div>
+						<p class="skill-tile__label">javascript</p>
 					</article>
 				</div>
 			</div>
 		</section>
 
-		<section class="hobbies-section snap-section" id="hobbies">
+		<!-- ============ PROJECTS ============ -->
+		<section class="projects-section" id="projects">
 			<div class="section">
-				<h2 class="section__title">hobbies</h2>
+				<div class="section-header">
+					<p class="section-eyebrow">built</p>
+					<h2 class="section-title">projects</h2>
+				</div>
+
+				<div class="project-grid">
+					<article class="project-card">
+						<h3 class="project-card__title">ollama-discord</h3>
+						<p class="project-card__desc">
+							locally-hosted discord bot that connects to ollama. persistent memory, contextual history, and rate limiting
+							baked in.
+						</p>
+						<div class="project-card__tags">
+							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/python.svg" alt="" />python</span>
+							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg" alt="" />docker</span>
+							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ollama-dark.svg" alt="" />ollama</span>
+						</div>
+						<div class="project-card__footer">
+							<a class="btn btn--tonal btn--small" href="https://github.com/sixteenjune/ollama-discord" target="_blank" rel="noreferrer">
+								<img
+									src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg"
+									class="btn__icon"
+									alt=""
+									aria-hidden="true"
+								/>
+								github
+							</a>
+						</div>
+					</article>
+
+					<article class="project-card">
+						<h3 class="project-card__title">baka-cli</h3>
+						<p class="project-card__desc">
+							a lua system-utility cli for gentoo and arch, cirno-themed. handles rebuilds, kernel builds, service
+							management, network/storage checks and backups, with a doctor command that catches a broken setup before
+							it bites.
+						</p>
+						<div class="project-card__tags">
+							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/lua.svg" alt="" />lua</span>
+							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linux.svg" alt="" />linux</span>
+						</div>
+						<div class="project-card__footer">
+							<a class="btn btn--tonal btn--small" href="https://github.com/sixteenjune/baka-cli" target="_blank" rel="noreferrer">
+								<img
+									src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg"
+									class="btn__icon"
+									alt=""
+									aria-hidden="true"
+								/>
+								github
+							</a>
+						</div>
+					</article>
+
+					<a class="project-card project-card--more" href="https://github.com/sixteenjune?tab=repositories" target="_blank" rel="noreferrer">
+						<svg class="project-card--more__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+							<circle cx="12" cy="12" r="9" />
+							<path d="M12 8v8M8 12h8" stroke-linecap="round" />
+						</svg>
+						<span>more on github</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ HOBBIES ============ -->
+		<section class="hobbies-section" id="hobbies">
+			<div class="section">
+				<div class="section-header">
+					<p class="section-eyebrow">off the clock</p>
+					<h2 class="section-title">hobbies</h2>
+				</div>
+
 				<div class="hobby-grid">
-					<article class="hobby-card">
-						<div class="hobby-media">
-							<img src="https://files.catbox.moe/63i75l.png" alt="sdvx cab" loading="lazy" decoding="async" />
-						</div>
-						<div class="hobby-body">
-							<h3>rhythm games</h3>
-							<p>tap to the beat</p>
-						</div>
-						<div class="hobby-reveal">
-							<p>favorites: maimai, osu!mania, sound voltex</p>
-						</div>
-					</article>
-
-					<article class="hobby-card">
-						<div class="hobby-media">
-							<img src="https://files.catbox.moe/44pmsx.jpg" alt="homelab" loading="lazy" decoding="async" />
-						</div>
-						<div class="hobby-body">
-							<h3>homelabbing</h3>
-							<p>self-hosting and managing servers.</p>
-						</div>
-						<div class="hobby-reveal">
-							<p>networking, docker stacks, security</p>
+					<article class="hobby-card" tabindex="0">
+						<img src="https://files.catbox.moe/63i75l.png" alt="sound voltex cabinet" loading="lazy" decoding="async" />
+						<div class="hobby-card__body">
+							<h3 class="hobby-card__title">rhythm games</h3>
+							<p class="hobby-card__line">tap to the beat</p>
+							<div class="hobby-card__tags">
+								<span class="tag tag--ghost">maimai</span>
+								<span class="tag tag--ghost">osu!mania</span>
+								<span class="tag tag--ghost">sdvx</span>
+							</div>
 						</div>
 					</article>
 
-					<article class="hobby-card">
-						<div class="hobby-media">
-							<img src="https://files.catbox.moe/uqxya6.jpg" alt="jailbroken switch" loading="lazy" decoding="async" />
+					<article class="hobby-card" tabindex="0">
+						<img src="https://files.catbox.moe/44pmsx.jpg" alt="homelab server rack" loading="lazy" decoding="async" />
+						<div class="hobby-card__body">
+							<h3 class="hobby-card__title">homelabbing</h3>
+							<p class="hobby-card__line">self-hosting & managing servers</p>
+							<div class="hobby-card__tags">
+								<span class="tag tag--ghost">networking</span>
+								<span class="tag tag--ghost">docker stacks</span>
+								<span class="tag tag--ghost">security</span>
+							</div>
 						</div>
-						<div class="hobby-body">
-							<h3>jailbreaking (hardware)</h3>
-							<p>mods, tweaks, and unlocks</p>
-						</div>
-						<div class="hobby-reveal">
-							<p>devices, tools, and odd recoveries</p>
+					</article>
+
+					<article class="hobby-card" tabindex="0">
+						<img src="https://files.catbox.moe/uqxya6.jpg" alt="jailbroken nintendo switch" loading="lazy" decoding="async" />
+						<div class="hobby-card__body">
+							<h3 class="hobby-card__title">jailbreaking</h3>
+							<p class="hobby-card__line">mods, tweaks & unlocks</p>
+							<div class="hobby-card__tags">
+								<span class="tag tag--ghost">hardware</span>
+								<span class="tag tag--ghost">firmware</span>
+								<span class="tag tag--ghost">recoveries</span>
+							</div>
 						</div>
 					</article>
 				</div>
@@ -220,14 +268,55 @@
 		</section>
 
 		<footer class="footer">
+			<div class="footer__links">
+				<a href="https://github.com/sixteenjune" target="_blank" rel="noreferrer" aria-label="GitHub">
+					<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github.svg" alt="" aria-hidden="true" />
+				</a>
+				<a href="https://discord.com/users/1473587210203959390" target="_blank" rel="noreferrer" aria-label="Discord">
+					<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg" alt="" aria-hidden="true" />
+				</a>
+			</div>
 			<p>16june · aka june</p>
 		</footer>
 
-		<div id="terminal-output" class="terminal-output" aria-live="polite"></div>
-		<div class="terminal-bar">
-			<span class="terminal-prompt">june@16june:~#</span>
-			<input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
-		</div>
+		<!-- ============ BOTTOM NAV ============ -->
+		<nav class="bottom-nav" aria-label="Section navigation">
+			<span class="bottom-nav__indicator" aria-hidden="true"></span>
+			<a class="bottom-nav__item is-active" href="#home">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M4 11.5 12 4l8 7.5" />
+					<path d="M6 10v9a1 1 0 0 0 1 1h3v-6h4v6h3a1 1 0 0 0 1-1v-9" />
+				</svg>
+				<span class="bottom-nav__label">home</span>
+			</a>
+			<a class="bottom-nav__item" href="#skills">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M8 7 3 12l5 5" />
+					<path d="M16 7l5 5-5 5" />
+				</svg>
+				<span class="bottom-nav__label">skills</span>
+			</a>
+			<a class="bottom-nav__item" href="#projects">
+				<svg viewBox="0 0 24 24" fill="currentColor">
+					<circle cx="6" cy="6" r="1.8" />
+					<circle cx="12" cy="6" r="1.8" />
+					<circle cx="18" cy="6" r="1.8" />
+					<circle cx="6" cy="12" r="1.8" />
+					<circle cx="12" cy="12" r="1.8" />
+					<circle cx="18" cy="12" r="1.8" />
+					<circle cx="6" cy="18" r="1.8" />
+					<circle cx="12" cy="18" r="1.8" />
+					<circle cx="18" cy="18" r="1.8" />
+				</svg>
+				<span class="bottom-nav__label">projects</span>
+			</a>
+			<a class="bottom-nav__item" href="#hobbies">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M12 20s-7-4.35-9.5-8.9C1 7.7 2.7 5 5.6 5c1.7 0 3 .9 3.9 2.3C10.4 5.9 11.7 5 13.4 5c2.9 0 4.6 2.7 3.1 6.1C14 15.65 12 20 12 20Z" />
+				</svg>
+				<span class="bottom-nav__label">hobbies</span>
+			</a>
+		</nav>
 
 		<script src="main.js"></script>
 	</body>
