@@ -1,15 +1,9 @@
-/* ===========================================================
-   16june.me — typing effect + bottom nav scroll-spy
-   =========================================================== */
-
-// ---------- typing effect ----------
-
 const phrases = [
-	"manages ai agents",
-	"runs web servers",
-	"ships clean pipelines",
-	"builds linux tooling",
-	"trains pytorch models",
+	"compiles at 3am",
+	"rebuilds kernels",
+	"runs local models",
+	"breaks the homelab",
+	"reads manpages for fun",
 ];
 
 const typingText = document.getElementById("typing-text");
@@ -49,8 +43,6 @@ if (typingText) {
 	tick();
 }
 
-// ---------- ripple effect (buttons + more-on-github card) ----------
-
 function attachRipple(el) {
 	el.addEventListener("pointerdown", (event) => {
 		const rect = el.getBoundingClientRect();
@@ -68,11 +60,9 @@ function attachRipple(el) {
 
 document.querySelectorAll(".btn, .project-card--more").forEach(attachRipple);
 
-// ---------- github stats (cached, fails silently to last-known-good) ----------
-
 const GH_USERNAME = "sixteenjune";
 const GH_CACHE_KEY = "gh-stats-cache-v1";
-const GH_CACHE_TTL = 1000 * 60 * 60 * 6; // 6 hours
+const GH_CACHE_TTL = 1000 * 60 * 60 * 6;
 
 const statEls = {
 	repos: document.querySelector('[data-stat="repos"]'),
@@ -97,7 +87,6 @@ function writeGhCache(data) {
 	try {
 		localStorage.setItem(GH_CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
 	} catch {
-		// storage unavailable (private browsing etc) — safe to ignore
 	}
 }
 
@@ -128,7 +117,7 @@ async function loadGithubStats() {
 	if (cached) {
 		renderGhStats(cached.data);
 		if (Date.now() - cached.timestamp < GH_CACHE_TTL) {
-			return; // cache is fresh enough, skip the network call entirely
+			return;
 		}
 	}
 
@@ -158,8 +147,6 @@ async function loadGithubStats() {
 		writeGhCache(data);
 		renderGhStats(data);
 	} catch {
-		// network/rate-limit failure: keep showing cached data if we had it,
-		// otherwise fail quietly rather than showing a broken widget
 		if (!cached && statEls.updated) {
 			statEls.updated.textContent = "stats unavailable";
 		}
@@ -167,8 +154,6 @@ async function loadGithubStats() {
 }
 
 loadGithubStats();
-
-// ---------- bottom nav: scroll-spy + sliding indicator ----------
 
 const nav = document.querySelector(".bottom-nav");
 const indicator = document.querySelector(".bottom-nav__indicator");

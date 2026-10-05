@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>16june.me | june</title>
-		<meta name="description" content="june — linux, systems and machine learning projects." />
+		<title>16june.me</title>
+		<meta name="description" content="personal archive." />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -16,11 +16,7 @@
 	</head>
 	<body>
 		<div class="bg-grid" aria-hidden="true"></div>
-		<div class="bg-blob bg-blob--blue" aria-hidden="true"></div>
-		<div class="bg-blob bg-blob--sapphire" aria-hidden="true"></div>
-		<div class="bg-blob bg-blob--lavender" aria-hidden="true"></div>
 
-		<!-- ============ HERO ============ -->
 		<section class="hero" id="home">
 			<div class="hero-bento">
 				<div class="bento-tile bento-tile--main">
@@ -32,7 +28,7 @@
 						<span class="status-chip__text">[<span id="typing-text"></span><span class="status-chip__cursor">_</span>]</span>
 					</div>
 
-					<p class="subtitle">building random stuff i like.</p>
+					<p class="subtitle">computer addicted 16yo.</p>
 
 					<div class="links">
 						<a class="btn" href="https://github.com/sixteenjune" target="_blank" rel="noreferrer">
@@ -87,68 +83,34 @@
 			</div>
 		</section>
 
-		<!-- ============ SKILLS ============ -->
 		<section class="skills-section" id="skills">
 			<div class="section">
 				<div class="section-header">
 					<p class="section-eyebrow">stack</p>
-					<h2 class="section-title">skills</h2>
+					<h2 class="section-title">information</h2>
 				</div>
 
 				<div class="skills-grid">
-					<article class="skill-tile" style="--tint: rgba(137,180,250,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linux.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">linux</p>
+					<article class="stack-row">
+						<span class="stack-row__number">01</span>
+						<div><h3>systems</h3><p>Linux · C · C++ · Rust · Bash</p></div>
 					</article>
-					<article class="skill-tile" style="--tint: rgba(116,199,236,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/shell-light.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">bash</p>
+					<article class="stack-row">
+						<span class="stack-row__number">02</span>
+						<div><h3>infra</h3><p>Docker · networking · self-hosting</p></div>
 					</article>
-					<article class="skill-tile" style="--tint: rgba(137,222,235,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/python.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">python</p>
+					<article class="stack-row">
+						<span class="stack-row__number">03</span>
+						<div><h3>web</h3><p>TypeScript · JavaScript</p></div>
 					</article>
-					<article class="skill-tile" style="--tint: rgba(180,190,254,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cpp.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">c++</p>
-					</article>
-					<article class="skill-tile" style="--tint: rgba(137,180,250,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rust-dark.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">rust</p>
-					</article>
-					<article class="skill-tile" style="--tint: rgba(116,199,236,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pytorch.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">pytorch</p>
-					</article>
-					<article class="skill-tile" style="--tint: rgba(137,222,235,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">docker</p>
-					</article>
-					<article class="skill-tile" style="--tint: rgba(180,190,254,.16)">
-						<div class="skill-tile__icon">
-							<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/javascript.svg" alt="" />
-						</div>
-						<p class="skill-tile__label">javascript</p>
+					<article class="stack-row">
+						<span class="stack-row__number">04</span>
+						<div><h3>ml</h3><p>Python · PyTorch · CUDA · llama.cpp</p></div>
 					</article>
 				</div>
 			</div>
 		</section>
 
-		<!-- ============ PROJECTS ============ -->
 		<section class="projects-section" id="projects">
 			<div class="section">
 				<div class="section-header">
@@ -158,15 +120,16 @@
 
 				<div class="project-grid">
 					<article class="project-card">
-						<h3 class="project-card__title">ollama-discord</h3>
+						<h3 class="project-card__title">local-inference bot</h3>
 						<p class="project-card__desc">
-							locally-hosted discord bot that connects to ollama. persistent memory, contextual history, and rate limiting
+							locally-hosted discord bot wired to llama.cpp. persistent memory, contextual history, and rate limiting
 							baked in.
 						</p>
 						<div class="project-card__tags">
 							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/python.svg" alt="" />python</span>
 							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg" alt="" />docker</span>
-							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ollama-dark.svg" alt="" />ollama</span>
+							<span class="tag">llama.cpp</span>
+							<span class="tag">cuda</span>
 						</div>
 						<div class="project-card__footer">
 							<a class="btn btn--tonal btn--small" href="https://github.com/sixteenjune/ollama-discord" target="_blank" rel="noreferrer">
@@ -185,8 +148,7 @@
 						<h3 class="project-card__title">baka-cli</h3>
 						<p class="project-card__desc">
 							a lua system-utility cli for gentoo and arch, cirno-themed. handles rebuilds, kernel builds, service
-							management, network/storage checks and backups, with a doctor command that catches a broken setup before
-							it bites.
+							management, network/storage checks and backups.
 						</p>
 						<div class="project-card__tags">
 							<span class="tag"><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/lua.svg" alt="" />lua</span>
@@ -216,12 +178,11 @@
 			</div>
 		</section>
 
-		<!-- ============ HOBBIES ============ -->
 		<section class="hobbies-section" id="hobbies">
 			<div class="section">
 				<div class="section-header">
-					<p class="section-eyebrow">off the clock</p>
-					<h2 class="section-title">hobbies</h2>
+					<p class="section-eyebrow">outside the terminal</p>
+					<h2 class="section-title">other tabs</h2>
 				</div>
 
 				<div class="hobby-grid">
@@ -279,7 +240,6 @@
 			<p>16june · aka june</p>
 		</footer>
 
-		<!-- ============ BOTTOM NAV ============ -->
 		<nav class="bottom-nav" aria-label="Section navigation">
 			<span class="bottom-nav__indicator" aria-hidden="true"></span>
 			<a class="bottom-nav__item is-active" href="#home">
@@ -294,7 +254,7 @@
 					<path d="M8 7 3 12l5 5" />
 					<path d="M16 7l5 5-5 5" />
 				</svg>
-				<span class="bottom-nav__label">skills</span>
+				<span class="bottom-nav__label">stack</span>
 			</a>
 			<a class="bottom-nav__item" href="#projects">
 				<svg viewBox="0 0 24 24" fill="currentColor">
