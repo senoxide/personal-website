@@ -60,7 +60,7 @@ function attachRipple(el) {
 
 document.querySelectorAll(".btn, .project-card--more").forEach(attachRipple);
 
-const GH_USERNAME = "sixteenjune";
+const GH_USERNAME = "senoxide";
 const GH_CACHE_KEY = "gh-stats-cache-v1";
 const GH_CACHE_TTL = 1000 * 60 * 60 * 6;
 
