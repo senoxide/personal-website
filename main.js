@@ -1,9 +1,9 @@
 const phrases = [
 	"builds kernels",
 	"runs local models",
-	"self-hosts services",
-	"tunes configs",
-	"reads manpages",
+	"self-hosts everything",
+	"tunes nix configs",
+	"reads manpages, actually",
 ];
 
 const typingText = document.getElementById("typing-text");
