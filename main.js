@@ -1,9 +1,9 @@
 const phrases = [
-	"compiles at 3am",
-	"rebuilds kernels",
+	"builds kernels",
 	"runs local models",
-	"breaks the homelab",
-	"reads manpages for fun",
+	"self-hosts services",
+	"tunes configs",
+	"reads manpages",
 ];
 
 const typingText = document.getElementById("typing-text");
